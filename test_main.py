@@ -1,18 +1,20 @@
-from main import get_boxes_count
 import pytest
+
+from main import get_boxes_count
+
 
 @pytest.mark.parametrize(
     'products_count, box_capacity, expected_boxes', [
-    (1, 1, 1),
-    (2, 1, 2),
-    (14, 5, 3),
-    (15, 5, 3),
-    (16, 5, 4),
-    (1, 2, 1),
-    (0, 1, 0),
-    (1, 2 ** 1074, 1),
-    (1, 10 ** 323, 1),
-    ])
+        (1, 1, 1),
+        (2, 1, 2),
+        (14, 5, 3),
+        (15, 5, 3),
+        (16, 5, 4),
+        (1, 2, 1),
+        (0, 1, 0),
+        (1, 2 ** 1074, 1),
+        (1, 10 ** 323, 1),
+        ])
 def test_get_boxes_count_function_positive(products_count, box_capacity, expected_boxes):
     boxes = get_boxes_count(products_count, box_capacity)
     assert boxes == expected_boxes
